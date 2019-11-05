@@ -1,0 +1,15 @@
+http://,CPF,anypasswordABC,,Nota Fiscal Paulista,App,0
+http://,hmail,anypasswordDEF,,Pag Seguro,App,0
+http://,11111111,anypasswordGHI,,Privian Odonto,App,0
+
+http://,CPF,anypasswordJKL,,Easynvest,Corretoras,0
+http://,CPF,anypasswordMNO,,Modal Mais,Corretoras,0
+http://,CPF,anypasswordPQR,Rico,Corretoras,0
+
+http://,hmail,anypassword000,,Algaworks,Education,0
+http://,hmail,anypassword111,,Openshift,Education,0
+http://,hmail,anypassword222,,Saraiva,Education,0
+
+http://,CPF,anypassword123,,Tesouro Direto,Finanças,0
+http://,hmail,anypassword456,,Empiricus,Finanças,0
+http://,hmail,anypassword789,,Clube FII,Finanças,0
