@@ -1,6 +1,6 @@
 # PSD Organizer
 
-FILE_HEADER = "url,username,password,extra,name,grouping,fav"
+FILE_HEADER = "url,username,password,totp,extra,name,grouping,fav"
 REGISTRY_START = "http"
 
 SUBJECT_DELIMITATOR = "============================================="
