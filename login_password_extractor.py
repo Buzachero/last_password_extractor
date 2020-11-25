@@ -2,6 +2,18 @@
 
 FILE_HEADER = "url,username,password,totp,extra,name,grouping,fav"
 REGISTRY_START = "http"
+DELIMITER = ","
+FILE_HEADER_SIZE = len(FILE_HEADER.split(DELIMITER))
+
+# HEADER INDEXES
+URL_INDEX = 0
+USERNAME_INDEX = 1
+PASSWORD_INDEX = 2
+SITE_NAME_INDEX = 5
+SUBJECT_KEY_INDEX = 6
+
+
+# SUBJECT CONSTANTS
 
 SUBJECT_DELIMITATOR = "============================================="
 
@@ -98,24 +110,34 @@ def initializeListContents():
 
 
 def extractAndStoreTokens(line):    
-    tokens = line.split(",")
+    tokens = line.split(DELIMITER)
 
-    if(len(tokens) != 7):        
+    if(len(tokens) != FILE_HEADER_SIZE):     
+        print('Line WITHOUT header pattern: %s' % (line))
         return
 
     auxList = []
-    subjectKey = tokens[5].upper() + "\n"    
+    subjectKey = tokens[SUBJECT_KEY_INDEX] 
+    subjectKeyUpperCase = str(subjectKey).upper()
 
     for subList in allSubjectsList:        
-        if(subList[1] == subjectKey):
+        if(subjectKeyUpperCase in subList[1]):
             auxList = subList
             break
 
-    auxList.append(tokens[4].upper() + "\n")
-    auxList.append(tokens[0] + "\n")
-    auxList.append(tokens[1] + "\n")
-    auxList.append(tokens[2] + "\n")
+    siteName = tokens[SITE_NAME_INDEX]
+    url = tokens[URL_INDEX] 
+    username = tokens[USERNAME_INDEX]
+    password = tokens[PASSWORD_INDEX]
+
+    auxList.append(siteName.upper())
     auxList.append("\n")
+    auxList.append(url)
+    auxList.append("\n")
+    auxList.append(username)
+    auxList.append("\n")
+    auxList.append(password)
+    auxList.append("\n\n")    
  
 def printListContents():
     for subList in allSubjectsList:
@@ -142,6 +164,8 @@ for line in file:
     line = line.strip()
     if(line.startswith(REGISTRY_START)):
         extractAndStoreTokens(line)
+    else:
+        print('Line WITHOUT \'%s\': %s' % (REGISTRY_START, line))
 
 storeLists()
 
